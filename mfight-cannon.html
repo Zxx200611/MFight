@@ -707,6 +707,8 @@ function Cannon(pos)
 	this.y = pos.y;
 	this.ang = 0;
 	this.force = 0;
+	this.turning_left = 0;
+	this.turning_right = 0;
 
 	this.draw = () => {
 		cvs.fillStyle = colors.CANNON;
@@ -717,6 +719,7 @@ function Cannon(pos)
 		// console.log(ll.t.x,ll.t.y);
 		ll.draw(50);
 	}
+
 	this.turn_right = () => {
 		this.ang-=0.02*Pi;
 		if(this.ang<0)
@@ -725,7 +728,23 @@ function Cannon(pos)
 		}
 	}
 	this.turn_left = () => {
+		this.ang+=0.02*Pi;
+		if(this.ang>=Pi)
+		{
+			this.ang-=Pi;
+		}
+	}
+	this.start_turn_right = () => {
 
+	}
+
+	this.update = () => {
+		this.draw();
+		if(this.turning_right)
+		{
+			this.turn_right();
+		}
+		if(this)
 	}
 }
 
